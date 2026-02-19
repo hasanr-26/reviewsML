@@ -1,20 +1,16 @@
-"""
-Pydantic models for API and data validation
-"""
+
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from datetime import datetime
 
-class ReviewInput(BaseModel):
-    
+class ReviewInput(BaseModel):  
     hotel_id: str = Field(..., description="Hotel ID")
     review_text: str = Field(..., description="Review text")
     rating: int = Field(..., ge=1, le=5, description="Rating 1-5") #if rating above 5 , rejected directly
     reviewer_name: Optional[str] = None
     source: Optional[str] = "internal"
 
-class ReviewAnalysisOutput(BaseModel):
-  
+class ReviewAnalysisOutput(BaseModel): 
     review_id: str
     hotel_id: str
     rating: int
@@ -27,14 +23,12 @@ class ReviewAnalysisOutput(BaseModel):
     detected_signals: dict
     flags: List[str]
 
-class BulkAnalysisInput(BaseModel):
-   
+class BulkAnalysisInput(BaseModel):   
     hotel_id: str = Field(..., description="Hotel ID")
     input_format: str = Field(..., description="Format: jsonl, csv, json")
     input_path: str = Field(..., description="Path to input file")
 
-class BulkAnalysisOutput(BaseModel):
-    
+class BulkAnalysisOutput(BaseModel):   
     total_reviews: int
     published_count: int
     rejected_count: int
@@ -42,20 +36,17 @@ class BulkAnalysisOutput(BaseModel):
     csv_output_path: str
     processing_time_seconds: float
 
-class ReviewGenerationInput(BaseModel):
-   
+class ReviewGenerationInput(BaseModel):   
     hotel_id: str = Field(..., description="Hotel ID")
     count: int = Field(default=500, ge=1, le=5000, description="Number of reviews")
 
-class ReviewGenerationOutput(BaseModel):
-  
+class ReviewGenerationOutput(BaseModel):  
     hotel_id: str
     total_generated: int
     jsonl_path: str
     csv_path: str
 
-class SummaryReportOutput(BaseModel):
-  
+class SummaryReportOutput(BaseModel):  
     hotel_id: str
     total_reviews: int
     published_count: int
