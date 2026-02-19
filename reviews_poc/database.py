@@ -1,6 +1,4 @@
-"""
-MongoDB database connection and utilities
-"""
+
 from pymongo import MongoClient, ASCENDING, DESCENDING
 from pymongo.errors import ConnectionFailure
 import logging
@@ -12,7 +10,7 @@ client = None
 db = None
 
 def init_db():
-    """Initialize MongoDB connection and create indexes"""
+    
     global client, db
     try:
         client = MongoClient(config.MONGODB_URL, serverSelectionTimeoutMS=5000)
@@ -32,7 +30,7 @@ def init_db():
         raise
 
 def _create_collections():
-    """Create collections if they don't exist"""
+   
     if "reviews_raw" not in db.list_collection_names():
         db.create_collection("reviews_raw")
         logger.info("Created collection: reviews_raw")
@@ -42,7 +40,7 @@ def _create_collections():
         logger.info("Created collection: reviews_enriched")
 
 def _create_indexes():
-    """Create indexes for optimal query performance"""
+   
     try:
         db.reviews_raw.create_index([("review_id", ASCENDING)], unique=True)
         db.reviews_raw.create_index([("hotel_id", ASCENDING)])
@@ -59,23 +57,23 @@ def _create_indexes():
         logger.error(f"Error creating indexes: {e}")
 
 def get_db():
-    """Get MongoDB database instance"""
+    
     global db
     if db is None:
         init_db()
     return db
 
 def close_db():
-    """Close MongoDB connection"""
+   
     global client
     if client:
         client.close()
         logger.info("MongoDB connection closed")
 
 def get_reviews_raw_collection():
-    """Get reviews_raw collection"""
+    
     return get_db().reviews_raw
 
 def get_reviews_enriched_collection():
-    """Get reviews_enriched collection"""
+   
     return get_db().reviews_enriched
