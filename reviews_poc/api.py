@@ -1,6 +1,4 @@
-"""
-FastAPI application for Reviews Analysis POC (MongoDB Version)
-"""
+
 import logging
 import time
 from typing import List
@@ -39,7 +37,7 @@ app.add_middleware(
 
 @app.on_event("startup")
 async def startup():
-    """Initialize database on application startup"""
+    
     try:
         init_db()
         logger.info("Application startup completed")
@@ -49,12 +47,12 @@ async def startup():
 
 @app.on_event("shutdown")
 async def shutdown():
-    """Close database connection on shutdown"""
+    
     close_db()
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
+    
     return {
         "status": "healthy",
         "timestamp": datetime.utcnow().isoformat()
@@ -62,15 +60,7 @@ async def health_check():
 
 @app.post("/reviews/analyze-one", response_model=ReviewAnalysisOutput)
 async def analyze_single_review(review: ReviewInput):
-    """
-    Analyze a single review submitted via Swagger
-    
-    This endpoint:
-    - Takes a hotel review as input
-    - Analyzes it using LLM
-    - Applies business rules
-    - Returns analysis results
-    """
+   
     try:
         review_id = f"{review.hotel_id}_{uuid.uuid4().hex[:12]}"
         
@@ -123,12 +113,7 @@ async def analyze_single_review(review: ReviewInput):
 
 @app.post("/reviews/analyze-bulk", response_model=BulkAnalysisOutput)
 async def analyze_bulk_reviews(request: BulkAnalysisInput):
-    """
-    Analyze multiple reviews from a file
-    
-    Supports: JSON, CSV, JSONL formats
-    Returns: Database and CSV export results
-    """
+   
     try:
         start_time = time.time()
         FileManager.ensure_data_dir()
@@ -242,12 +227,7 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
 
 @app.post("/reviews/generate", response_model=ReviewGenerationOutput)
 async def generate_reviews(request: ReviewGenerationInput):
-    """
-    Generate realistic hotel reviews using AI
-    
-    Creates sample reviews with both good and problematic cases
-    Exports to both JSONL and CSV formats
-    """
+  
     try:
         FileManager.ensure_data_dir()
         logger.info(f"Generating {request.count} reviews for {request.hotel_id}")
@@ -263,15 +243,7 @@ async def generate_reviews(request: ReviewGenerationInput):
 
 @app.get("/reports/summary", response_model=SummaryReportOutput)
 async def get_summary_report(hotel_id: str):
-    """
-    Get summary statistics for a hotel's reviews
-    
-    Returns:
-    - Total reviews and publish/reject counts
-    - Rejection reason distribution
-    - Tag distribution
-    - Sentiment distribution
-    """
+   
     try:
         enriched_collection = get_reviews_enriched_collection()
         
@@ -328,7 +300,7 @@ async def get_summary_report(hotel_id: str):
 
 @app.get("/db/info")
 async def get_db_info():
-    """Get MongoDB statistics"""
+   
     try:
         raw_collection = get_reviews_raw_collection()
         enriched_collection = get_reviews_enriched_collection()

@@ -1,6 +1,4 @@
-"""
-Utility functions for data processing
-"""
+
 import json
 import logging
 import pandas as pd
@@ -10,11 +8,11 @@ from pathlib import Path
 logger = logging.getLogger(__name__)
 
 class DataImporter:
-    """Import reviews from various formats"""
+   
     
     @staticmethod
     def import_jsonl(filepath: str) -> Generator[Dict, None, None]:
-        """Import reviews from JSONL file"""
+        #JSON 
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 for line_num, line in enumerate(f, 1):
@@ -30,7 +28,7 @@ class DataImporter:
     
     @staticmethod
     def import_csv(filepath: str) -> Generator[Dict, None, None]:
-        """Import reviews from CSV file"""
+        #CSV
         try:
             df = pd.read_csv(filepath)
             for _, row in df.iterrows():
@@ -41,7 +39,7 @@ class DataImporter:
     
     @staticmethod
     def import_json(filepath: str) -> Generator[Dict, None, None]:
-        """Import reviews from JSON array file"""
+        #JSON array
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -57,7 +55,7 @@ class DataImporter:
     
     @staticmethod
     def import_file(filepath: str, file_format: str) -> Generator[Dict, None, None]:
-        """Import reviews from file based on format"""
+       #Import file based on specified format
         file_format = file_format.lower()
         
         if file_format == 'jsonl':
@@ -70,11 +68,11 @@ class DataImporter:
             raise ValueError(f"Unsupported format: {file_format}")
 
 class DataExporter:
-    """Export analysis results to CSV and other formats"""
+    
     
     @staticmethod
     def export_enriched_csv(reviews_enriched: List[Dict], filepath: str) -> str:
-        """Export enriched review data to CSV"""
+       
         try:
             rows = []
             for review in reviews_enriched:
@@ -101,7 +99,7 @@ class DataExporter:
     
     @staticmethod
     def export_summary_json(summary_data: Dict, filepath: str) -> str:
-        """Export summary report to JSON"""
+        
         try:
             with open(filepath, 'w', encoding='utf-8') as f:
                 json.dump(summary_data, f, indent=2, ensure_ascii=False)
@@ -112,26 +110,22 @@ class DataExporter:
             raise
 
 class FileManager:
-    """Manage file operations"""
+    
     
     @staticmethod
     def ensure_data_dir():
-        """Ensure data directory exists"""
         Path("data").mkdir(exist_ok=True)
     
     @staticmethod
     def ensure_exports_dir():
-        """Ensure exports directory exists"""
         Path("exports").mkdir(exist_ok=True)
     
     @staticmethod
     def get_export_path(filename: str) -> str:
-        """Get full path for export file"""
         FileManager.ensure_exports_dir()
         return f"exports/{filename}"
 
 def validate_review_input(review_dict: Dict) -> bool:
-    """Validate review input data"""
     required_fields = ['review_id', 'hotel_id', 'rating', 'review_text']
     
     for field in required_fields:

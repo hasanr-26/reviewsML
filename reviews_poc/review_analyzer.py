@@ -1,6 +1,4 @@
-"""
-Review analysis module - LLM + Business Rules
-"""
+
 import json
 import logging
 import re
@@ -23,7 +21,7 @@ logger = logging.getLogger(__name__)
 client = None
 
 def _get_client():
-    """Lazy-load Groq client on first use"""
+    
     global client
     if client is None:
         if not config.GROQ_API_KEY:
@@ -32,16 +30,14 @@ def _get_client():
     return client
 
 class ReviewAnalyzer:
-    """Analyze reviews using LLM and business rules"""
+   
     
     def __init__(self):
         self.model_name = config.LLM_MODEL
         self.prompt_version = PROMPT_VERSION
     
     def analyze_review(self, review_id: str, hotel_id: str, rating: int, review_text: str) -> Dict:
-        """
-        Analyze a single review - comprehensive extraction + decision
-        """
+        
         try:
             signals, topic_tags, flags = self._analyze_with_llm(rating, review_text)
             
@@ -79,7 +75,7 @@ class ReviewAnalyzer:
             return self._get_safe_default_analysis(review_id, hotel_id, rating, review_text)
     
     def _analyze_with_llm(self, rating: int, review_text: str) -> Tuple[Dict, List[str], List[str]]:
-        """Call LLM to analyze review"""
+        #Call LLM to analyze review
         try:
             prompt = REVIEW_ANALYSIS_PROMPT.format(
                 rating=rating,
@@ -122,10 +118,10 @@ class ReviewAnalyzer:
             return self._get_default_signals(), [], []
     
     def _enhance_signals_with_regex(self, review_text: str, signals: Dict) -> Dict:
-        """
-        Enhanced regex-based checks to catch what LLM might miss
-        These checks are definitive -override LLM if regex finds something
-        """
+        
+        #Enhanced regex-based checks to catch what LLM might miss
+        #These checks are definitive -override LLM if regex finds something
+        
         text_lower = review_text.lower()
         
         if any(re.search(pattern, text_lower, re.IGNORECASE) for pattern in PRICE_PATTERNS):
@@ -185,13 +181,13 @@ class ReviewAnalyzer:
         return publish_decision, rejection_reasons
     
     def _get_sentiment_tag(self, sentiment: str) -> str:
-        """Get sentiment tag"""
+        #Get sentiment tag
         if sentiment in config.SENTIMENT_TAGS:
             return sentiment
         return "SENTIMENT_NEUTRAL"
     
     def _generate_tags(self, signals: Dict, topic_tags: List[str], sentiment_tag: str) -> List[str]:
-        """Generate final tag list"""
+       
         tags = [sentiment_tag]
         
         for tag in topic_tags:
@@ -220,13 +216,13 @@ class ReviewAnalyzer:
         return unique_tags
     
     def _auto_summarize(self, review_text: str) -> str:
-        """Auto-generate summary if LLM doesn't provide one"""
+        
         if len(review_text) <= 150:
             return review_text
         return review_text[:150] + "..."
     
     def _get_default_signals(self) -> Dict:
-        """Returns default signals for error handling"""
+        
         return {
             'price_mentioned': False,
             'owner_name_mentioned': False,
@@ -240,7 +236,7 @@ class ReviewAnalyzer:
         }
     
     def _get_safe_default_analysis(self, review_id: str, hotel_id: str, rating: int, review_text: str) -> Dict:
-        """Return safe default analysis on complete failure"""
+        
         signals = self._get_default_signals()
         signals = self._enhance_signals_with_regex(review_text, signals)
         

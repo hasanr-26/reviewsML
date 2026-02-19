@@ -1,7 +1,4 @@
-"""
-Standalone script to generate 500+ reviews dataset
-Run this to create the initial dataset before starting the API
-"""
+
 import sys
 import logging
 from pathlib import Path
@@ -15,7 +12,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main():
-    """Generate and export reviews"""
+    
     try:
         Path("data").mkdir(exist_ok=True)
         logger.info("Data directory ensured")

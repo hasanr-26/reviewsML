@@ -1,6 +1,4 @@
-"""
-Review generation module using Groq API
-"""
+
 import json
 import logging
 from typing import List, Dict
@@ -16,7 +14,7 @@ logger = logging.getLogger(__name__)
 client = None
 
 def _get_client():
-    """Lazy-load Groq client on first use"""
+    
     global client
     if client is None:
         if not config.GROQ_API_KEY:
@@ -25,7 +23,7 @@ def _get_client():
     return client
 
 class ReviewGenerator:
-    """Generate realistic hotel reviews using Groq"""
+   
     
     def __init__(self):
         self.hotel_id = "HOTEL_001"
@@ -41,7 +39,7 @@ class ReviewGenerator:
         ]
     
     def generate_reviews(self, count: int) -> List[Dict]:
-        """Generate reviews using Groq"""
+       
         reviews = []
         logger.info(f"Starting generation of {count} reviews")
         
@@ -83,7 +81,7 @@ class ReviewGenerator:
         return reviews
     
     def _generate_normal_review(self, rating: int, topic: str, reviewer_name: str) -> str:
-        """Generate a normal review without problematic content"""
+        
         try:
             prompt = REVIEW_GENERATION_PROMPT.format(
                 topic=topic,
@@ -107,7 +105,7 @@ class ReviewGenerator:
             return None
     
     def _generate_problematic_review(self, rating: int, topic: str, reviewer_name: str) -> str:
-        """Generate a review with problematic content (price, owner name, etc.)"""
+      
         problematic_templates = [
             f"The room was nice but I paid ₹{random.randint(3000, 8000)} per night. {topic} was okay.",
             f"Location is great, Rs. {random.randint(4000, 7000)} seemed expensive though. {topic} was average.",
@@ -128,13 +126,13 @@ class ReviewGenerator:
         return random.choice(problematic_templates)
     
     def _weighted_random_rating(self) -> int:
-        """Return a weighted random rating"""
+     
         ratings = list(self.rating_weights.keys())
         weights = list(self.rating_weights.values())
         return random.choices(ratings, weights=weights, k=1)[0]
 
 class ReviewExporter:
-    """Export reviews to JSONL and CSV formats"""
+   
     
     @staticmethod
     def export_jsonl(reviews: List[Dict], filepath: str) -> str:
@@ -151,7 +149,7 @@ class ReviewExporter:
     
     @staticmethod
     def export_csv(reviews: List[Dict], filepath: str) -> str:
-        """Export reviews to CSV format"""
+       
         try:
             import pandas as pd
             df = pd.DataFrame(reviews)
@@ -163,7 +161,7 @@ class ReviewExporter:
             raise
 
 def generate_and_export_reviews(hotel_id: str, count: int) -> Dict:
-    """Main function to generate and export reviews"""
+   
     generator = ReviewGenerator()
     exporter = ReviewExporter()
     
