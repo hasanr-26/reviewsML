@@ -1,0 +1,118 @@
+review_id,hotel_id,rating,review_text,reviewer_name,source,created_at
+HOTEL_001_722a4652ff79,HOTEL_001,3,Check out my blog: www.myhotelreviews.com for more reviews about Noise levels and quiet atmosphere,Pooja Kumari,google,2025-03-10T17:53:07.506710
+HOTEL_001_9139d55390d5,HOTEL_001,5,"Location is great, Rs. 5873 seemed expensive though. Maintenance and repairs was average.",Rajesh Kumar,internal,2025-03-21T17:53:07.553226
+HOTEL_001_32a19f2e1426,HOTEL_001,4,Manager Priya was nice but the Check-in and check-out experience was disappointing.,David Martinez,internal,2026-01-03T17:53:07.553311
+HOTEL_001_0b12b510ca89,HOTEL_001,4,I paid 4387 rupees which felt high. Hotel location and nearby attractions was decent.,Amit Patel,internal,2025-04-15T17:53:07.860712
+HOTEL_001_70c6c163ca67,HOTEL_001,3,"For complaints, contact info@hotel.in",Sanjay Reddy,google,2025-11-09T17:53:07.860793
+HOTEL_001_752807f49a8a,HOTEL_001,2,Bloody awful Bathroom quality and amenities! Worst experience ever!,Isha Kapoor,google,2025-03-13T17:53:07.860830
+HOTEL_001_f51f2f07e016,HOTEL_001,5,Check out my blog: www.myhotelreviews.com for more reviews about Parking availability and quality,Varun Singh,google,2025-07-15T17:53:07.883558
+HOTEL_001_f66115a672d7,HOTEL_001,4,I paid 2454 rupees which felt high. Safety and security measures was decent.,Jennifer Taylor,internal,2026-01-22T17:53:07.883629
+HOTEL_001_359e5ae801ba,HOTEL_001,5,I paid 2717 rupees which felt high. Breakfast and restaurant food quality was decent.,Divya Sinha,google,2025-07-01T17:53:08.001228
+HOTEL_001_d4a7c5baf21d,HOTEL_001,5,The owner Mr. Sharma was helpful but Maintenance and repairs could be better.,Nikhil Joshi,internal,2025-08-11T17:53:08.071629
+HOTEL_001_9dddba264240,HOTEL_001,4,The damn Check-in and check-out experience was horrible! Waste of money!,Sanjay Reddy,internal,2025-02-26T17:53:08.071691
+HOTEL_001_bec2b5138528,HOTEL_001,4,"Location is great, Rs. 6400 seemed expensive though. Parking availability and quality was average.",Meera Iyer,booking,2026-02-09T17:53:08.168092
+HOTEL_001_7b8fb2e920cd,HOTEL_001,5,Bloody awful Check-in and check-out experience! Worst experience ever!,Amit Patel,internal,2025-10-12T17:53:08.240181
+HOTEL_001_2f9fc0ad3e65,HOTEL_001,3,"Location is great, Rs. 6322 seemed expensive though. Bathroom quality and amenities was average.",Pooja Kumari,internal,2025-12-23T17:53:08.240324
+HOTEL_001_a75316552f27,HOTEL_001,4,The room was nice but I paid ₹5323 per night. Safety and security measures was okay.,Priya Singh,google,2025-10-20T17:53:08.240384
+HOTEL_001_d1d9e8c460c9,HOTEL_001,3,The room was nice but I paid ₹4980 per night. Breakfast and restaurant food quality was okay.,Rahul Chatterjee,google,2025-11-19T17:53:08.404356
+HOTEL_001_eb9f40c54ce4,HOTEL_001,4,I paid 2459 rupees which felt high. Staff behavior and customer service was decent.,Rahul Chatterjee,booking,2025-05-20T17:53:08.612324
+HOTEL_001_a5b3c233688e,HOTEL_001,4,The damn Hotel location and nearby attractions was horrible! Waste of money!,Neha Sharma,google,2026-02-10T17:53:08.612361
+HOTEL_001_be9d1653daa2,HOTEL_001,5,The room was nice but I paid ₹6904 per night. Maintenance and repairs was okay.,David Martinez,google,2025-08-13T17:53:08.892007
+HOTEL_001_24e4495d0a3a,HOTEL_001,4,The damn Noise levels and quiet atmosphere was horrible! Waste of money!,Michael Brown,booking,2025-03-19T17:53:08.892085
+HOTEL_001_c1aa7c2c0e43,HOTEL_001,5,Manager Priya was nice but the WiFi quality and connectivity was disappointing.,Sangeeta Gupta,internal,2026-01-26T17:53:08.970794
+HOTEL_001_935a0031754f,HOTEL_001,4,The owner Mr. Sharma was helpful but Cleanliness and room condition could be better.,Lisa Anderson,internal,2025-09-17T17:53:09.193574
+HOTEL_001_3a6b1a1511c0,HOTEL_001,5,The room was nice but I paid ₹3112 per night. Bathroom quality and amenities was okay.,James Thomas,google,2025-12-31T17:53:09.309067
+HOTEL_001_8fff19cce006,HOTEL_001,3,The damn Check-in and check-out experience was horrible! Waste of money!,Pooja Kumari,internal,2025-05-17T17:53:09.359757
+HOTEL_001_3ffb53847656,HOTEL_001,3,"For complaints, contact info@hotel.in",Jennifer Taylor,google,2025-09-23T17:53:09.432730
+HOTEL_001_8a357712ecfe,HOTEL_001,5,I paid 5878 rupees which felt high. Bathroom quality and amenities was decent.,Vikram Rao,google,2026-02-16T17:53:09.432797
+HOTEL_001_5addc182cfc2,HOTEL_001,5,The owner Mr. Sharma was helpful but Parking availability and quality could be better.,Varun Singh,internal,2025-04-15T17:53:09.502381
+HOTEL_001_27e7d1798589,HOTEL_001,3,The room was nice but I paid ₹5635 per night. Safety and security measures was okay.,Rohan Verma,google,2026-01-10T17:53:09.524492
+HOTEL_001_f371a2d5b2af,HOTEL_001,4,"Check out my blog: www.myhotelreviews.com for more reviews about Pool, gym, and other amenities",Pooja Kumari,internal,2025-07-13T17:53:09.708689
+HOTEL_001_66af7dd92521,HOTEL_001,4,The damn WiFi quality and connectivity was horrible! Waste of money!,Rohan Verma,google,2025-06-29T17:53:10.020373
+HOTEL_001_a1c952cab5af,HOTEL_001,5,Bloody awful Safety and security measures! Worst experience ever!,Pooja Kumari,google,2025-10-29T17:53:10.066088
+HOTEL_001_98422139f79d,HOTEL_001,3,I paid 5044 rupees which felt high. Check-in and check-out experience was decent.,Mary White,booking,2025-05-28T17:53:10.161531
+HOTEL_001_d08312a55e3b,HOTEL_001,2,Check out my blog: www.myhotelreviews.com for more reviews about Safety and security measures,David Martinez,internal,2025-03-30T17:53:10.237426
+HOTEL_001_99a8b72ba27b,HOTEL_001,4,Spoke with owner Rajesh Kumar about Breakfast and restaurant food quality - he promised improvements.,Neha Sharma,internal,2025-04-12T17:53:10.261515
+HOTEL_001_de175dc7d277,HOTEL_001,3,The damn Hotel location and nearby attractions was horrible! Waste of money!,Divya Sinha,internal,2025-03-04T17:53:10.312017
+HOTEL_001_b96037c69d6d,HOTEL_001,5,The room was nice but I paid ₹5289 per night. Maintenance and repairs was okay.,Arjun Menon,google,2026-01-18T17:53:10.370929
+HOTEL_001_df578b6845a2,HOTEL_001,5,Spoke with owner Rajesh Kumar about Breakfast and restaurant food quality - he promised improvements.,Varun Singh,booking,2025-05-30T17:53:10.449923
+HOTEL_001_661481083aa2,HOTEL_001,4,Bloody awful WiFi quality and connectivity! Worst experience ever!,Rajesh Kumar,google,2026-01-07T17:53:10.475930
+HOTEL_001_6d58b76a15d0,HOTEL_001,4,"Location is great, Rs. 4752 seemed expensive though. Hotel location and nearby attractions was average.",David Martinez,booking,2025-05-12T17:53:10.500462
+HOTEL_001_a4becd67176f,HOTEL_001,5,I paid 3346 rupees which felt high. WiFi quality and connectivity was decent.,John Smith,booking,2025-12-24T17:53:10.550816
+HOTEL_001_9ee6957d30fb,HOTEL_001,4,The damn Bathroom quality and amenities was horrible! Waste of money!,Deepak Mishra,google,2026-02-14T17:53:10.601502
+HOTEL_001_ad18157b938d,HOTEL_001,5,I paid 3218 rupees which felt high. Maintenance and repairs was decent.,Arjun Menon,google,2025-07-19T17:53:10.772328
+HOTEL_001_49eb60a272fb,HOTEL_001,4,The damn Noise levels and quiet atmosphere was horrible! Waste of money!,Sarah Johnson,booking,2025-03-14T17:53:11.043582
+HOTEL_001_90c100c4d0fd,HOTEL_001,5,The owner Mr. Sharma was helpful but WiFi quality and connectivity could be better.,Rajesh Kumar,internal,2026-01-11T17:53:11.185996
+HOTEL_001_79199476be1c,HOTEL_001,4,"Spoke with owner Rajesh Kumar about Pool, gym, and other amenities - he promised improvements.",Sanjay Reddy,internal,2025-08-06T17:53:11.231655
+HOTEL_001_abd1a8368c85,HOTEL_001,2,"The damn Pool, gym, and other amenities was horrible! Waste of money!",David Martinez,google,2025-10-31T17:53:11.256663
+HOTEL_001_5690bc85e9c0,HOTEL_001,1,The damn WiFi quality and connectivity was horrible! Waste of money!,Amit Patel,google,2025-10-01T17:53:11.354046
+HOTEL_001_b2a5ca7606b3,HOTEL_001,5,"Location is great, Rs. 4933 seemed expensive though. Breakfast and restaurant food quality was average.",Pooja Kumari,google,2025-09-18T17:53:11.474178
+HOTEL_001_e552d1a51856,HOTEL_001,4,Bloody awful Maintenance and repairs! Worst experience ever!,Arjun Menon,booking,2025-06-02T17:53:11.645992
+HOTEL_001_6d07a48fa20f,HOTEL_001,4,"For complaints, contact info@hotel.in",Mary White,booking,2025-12-17T17:53:11.900034
+HOTEL_001_749258c7ce2e,HOTEL_001,5,The owner Mr. Sharma was helpful but Staff behavior and customer service could be better.,Nikhil Joshi,internal,2025-12-02T17:53:11.924247
+HOTEL_001_eda4b379f62a,HOTEL_001,1,"For complaints, contact info@hotel.in",Lisa Anderson,internal,2025-03-31T17:53:11.946974
+HOTEL_001_f0e5920e9735,HOTEL_001,1,"Location is great, Rs. 5642 seemed expensive though. Breakfast and restaurant food quality was average.",Rahul Chatterjee,internal,2025-11-25T17:53:11.971930
+HOTEL_001_e1c6ad4cdb02,HOTEL_001,5,The damn WiFi quality and connectivity was horrible! Waste of money!,Rajesh Kumar,internal,2025-03-22T17:53:11.971991
+HOTEL_001_657452aa15c2,HOTEL_001,3,Bloody awful Parking availability and quality! Worst experience ever!,Sanjay Reddy,google,2026-01-26T17:53:11.995259
+HOTEL_001_1ad6c8eb3a68,HOTEL_001,5,The room was nice but I paid ₹6952 per night. Maintenance and repairs was okay.,Isha Kapoor,google,2025-08-02T17:53:12.112266
+HOTEL_001_b2cb28549494,HOTEL_001,3,The owner Mr. Sharma was helpful but Noise levels and quiet atmosphere could be better.,Rohan Verma,booking,2025-06-23T17:53:12.112326
+HOTEL_001_91098cc70f78,HOTEL_001,2,"Location is great, Rs. 5881 seemed expensive though. Cleanliness and room condition was average.",Isha Kapoor,booking,2025-12-05T17:53:12.206745
+HOTEL_001_68e9a6f88254,HOTEL_001,2,"Location is great, Rs. 5138 seemed expensive though. Staff behavior and customer service was average.",Varun Singh,booking,2025-10-07T17:53:12.277334
+HOTEL_001_65583694e954,HOTEL_001,5,The owner Mr. Sharma was helpful but Noise levels and quiet atmosphere could be better.,Deepak Mishra,google,2025-09-25T17:53:12.300735
+HOTEL_001_f04e6364c9fd,HOTEL_001,5,The owner Mr. Sharma was helpful but Parking availability and quality could be better.,Mary White,internal,2025-05-03T17:53:12.396731
+HOTEL_001_0976de92ea56,HOTEL_001,2,I paid 5377 rupees which felt high. Check-in and check-out experience was decent.,Jennifer Taylor,internal,2025-09-14T17:53:12.396807
+HOTEL_001_2a7fae9f798f,HOTEL_001,5,Bloody awful Safety and security measures! Worst experience ever!,Rajesh Kumar,internal,2026-01-08T17:53:12.396844
+HOTEL_001_51046868b8e1,HOTEL_001,3,Spoke with owner Rajesh Kumar about Maintenance and repairs - he promised improvements.,Isha Kapoor,booking,2025-11-26T17:53:12.490244
+HOTEL_001_b5175acb2659,HOTEL_001,3,Bloody awful Bathroom quality and amenities! Worst experience ever!,John Smith,booking,2025-10-21T17:53:12.490311
+HOTEL_001_9bb93db51c07,HOTEL_001,3,Bloody awful Cleanliness and room condition! Worst experience ever!,Mary White,google,2025-12-14T17:53:12.584519
+HOTEL_001_3b9107ace688,HOTEL_001,5,I paid 5768 rupees which felt high. Noise levels and quiet atmosphere was decent.,Isha Kapoor,google,2025-03-07T17:53:12.634212
+HOTEL_001_4b9eac94ad03,HOTEL_001,3,Spoke with owner Rajesh Kumar about Cleanliness and room condition - he promised improvements.,David Martinez,internal,2025-05-25T17:53:12.706458
+HOTEL_001_9aa4f154ae1d,HOTEL_001,2,"Location is great, Rs. 6833 seemed expensive though. WiFi quality and connectivity was average.",John Smith,internal,2025-11-14T17:53:13.058774
+HOTEL_001_4c7b47980b26,HOTEL_001,5,The room was nice but I paid ₹6422 per night. Breakfast and restaurant food quality was okay.,Arjun Menon,google,2025-07-03T17:53:13.058837
+HOTEL_001_480c28069cb6,HOTEL_001,5,"Location is great, Rs. 6057 seemed expensive though. WiFi quality and connectivity was average.",Arjun Menon,google,2026-02-08T17:53:13.105373
+HOTEL_001_3d97660e33eb,HOTEL_001,3,Bloody awful Hotel location and nearby attractions! Worst experience ever!,Sanjay Reddy,google,2025-11-26T17:53:13.105429
+HOTEL_001_cffc5323ed36,HOTEL_001,4,Spoke with owner Rajesh Kumar about Parking availability and quality - he promised improvements.,Arjun Menon,booking,2025-07-21T17:53:13.408331
+HOTEL_001_d6dce62a323e,HOTEL_001,2,"Location is great, Rs. 4706 seemed expensive though. Bathroom quality and amenities was average.",Rohan Verma,booking,2025-07-27T17:53:13.555026
+HOTEL_001_895c197a5daa,HOTEL_001,2,The owner Mr. Sharma was helpful but Hotel location and nearby attractions could be better.,Arjun Menon,booking,2025-10-16T17:53:13.603333
+HOTEL_001_796382a67c15,HOTEL_001,1,The owner Mr. Sharma was helpful but Safety and security measures could be better.,Anjali Nair,google,2025-06-05T17:53:13.699730
+HOTEL_001_126b03805d3c,HOTEL_001,4,I paid 3881 rupees which felt high. Cleanliness and room condition was decent.,Jennifer Taylor,booking,2025-10-05T17:53:13.699790
+HOTEL_001_6eb2adec86de,HOTEL_001,3,The room was nice but I paid ₹6190 per night. Maintenance and repairs was okay.,John Smith,booking,2025-05-28T17:53:13.845216
+HOTEL_001_0910182bfdf4,HOTEL_001,2,"For complaints, contact info@hotel.in",Anjali Nair,google,2025-07-12T17:53:13.845277
+HOTEL_001_67fdf875d958,HOTEL_001,5,Spoke with owner Rajesh Kumar about Breakfast and restaurant food quality - he promised improvements.,Michael Brown,google,2025-06-20T17:53:13.845309
+HOTEL_001_8560becfca31,HOTEL_001,5,"For complaints, contact info@hotel.in",Priya Singh,internal,2025-10-01T17:53:13.891359
+HOTEL_001_979db0a32a3c,HOTEL_001,5,"Location is great, Rs. 4737 seemed expensive though. Hotel location and nearby attractions was average.",Varun Singh,internal,2025-11-14T17:53:14.246658
+HOTEL_001_f9f951b02e0b,HOTEL_001,3,Manager Priya was nice but the Noise levels and quiet atmosphere was disappointing.,Meera Iyer,internal,2025-11-01T17:53:14.246778
+HOTEL_001_9da94c2ba2ab,HOTEL_001,2,The owner Mr. Sharma was helpful but Noise levels and quiet atmosphere could be better.,Varun Singh,internal,2025-06-08T17:53:14.270874
+HOTEL_001_436f38c5b05f,HOTEL_001,1,"For complaints, contact 9876543210",David Martinez,booking,2026-02-07T17:53:14.270964
+HOTEL_001_d22a98d32580,HOTEL_001,5,The damn Bathroom quality and amenities was horrible! Waste of money!,Sarah Johnson,booking,2025-03-31T17:53:14.271012
+HOTEL_001_405ab3ae4490,HOTEL_001,5,The damn Staff behavior and customer service was horrible! Waste of money!,Vikram Rao,google,2025-09-12T17:53:14.294721
+HOTEL_001_7b2054fe3bfe,HOTEL_001,2,Bloody awful Parking availability and quality! Worst experience ever!,Sanjay Reddy,google,2025-10-29T17:53:14.317890
+HOTEL_001_c1ec2e7d6455,HOTEL_001,4,Check out my blog: www.myhotelreviews.com for more reviews about Breakfast and restaurant food quality,Priya Singh,google,2025-07-06T17:53:14.340814
+HOTEL_001_08ece46865a4,HOTEL_001,1,Spoke with owner Rajesh Kumar about Safety and security measures - he promised improvements.,Arjun Menon,booking,2026-01-09T17:53:14.433991
+HOTEL_001_4efdf661e195,HOTEL_001,4,"Location is great, Rs. 4891 seemed expensive though. Maintenance and repairs was average.",Sarah Johnson,google,2026-01-30T17:53:14.482528
+HOTEL_001_0a6a552965e8,HOTEL_001,4,Spoke with owner Rajesh Kumar about Noise levels and quiet atmosphere - he promised improvements.,John Smith,booking,2025-12-11T17:53:14.578339
+HOTEL_001_bb1d0990b0e9,HOTEL_001,2,The damn Check-in and check-out experience was horrible! Waste of money!,Priya Singh,booking,2025-07-31T17:53:14.627036
+HOTEL_001_827012519d0d,HOTEL_001,1,I paid 4732 rupees which felt high. Noise levels and quiet atmosphere was decent.,Rahul Chatterjee,internal,2025-11-10T17:53:14.652658
+HOTEL_001_f0be4faf92f8,HOTEL_001,4,"The room was nice but I paid ₹7659 per night. Pool, gym, and other amenities was okay.",Michael Brown,booking,2025-03-12T17:53:14.848736
+HOTEL_001_28133435abb3,HOTEL_001,4,The damn Check-in and check-out experience was horrible! Waste of money!,Isha Kapoor,google,2025-09-12T17:53:15.019592
+HOTEL_001_d3e7b17a798e,HOTEL_001,4,Spoke with owner Rajesh Kumar about Staff behavior and customer service - he promised improvements.,Kavya Desai,google,2025-12-11T17:53:15.139238
+HOTEL_001_974b0e8a44d9,HOTEL_001,4,"The owner Mr. Sharma was helpful but Pool, gym, and other amenities could be better.",Isha Kapoor,google,2025-06-19T17:53:15.139295
+HOTEL_001_43408a721225,HOTEL_001,2,Bloody awful Check-in and check-out experience! Worst experience ever!,Sneha Dubey,google,2025-10-02T17:53:15.139315
+HOTEL_001_3c30d6f85d7d,HOTEL_001,3,The room was nice but I paid ₹5418 per night. Maintenance and repairs was okay.,Divya Sinha,google,2026-01-21T17:53:15.139330
+HOTEL_001_7ab43385ef5c,HOTEL_001,1,"For complaints, contact admin@grandparadise.com",Pooja Kumari,internal,2025-09-30T17:53:15.228007
+HOTEL_001_e920a72ab648,HOTEL_001,2,Spoke with owner Rajesh Kumar about Noise levels and quiet atmosphere - he promised improvements.,Sneha Dubey,internal,2026-02-03T17:53:15.322131
+HOTEL_001_f27779d25c81,HOTEL_001,2,The room was nice but I paid ₹7584 per night. Breakfast and restaurant food quality was okay.,Neha Sharma,google,2025-05-08T17:53:15.373664
+HOTEL_001_05bb9df679c6,HOTEL_001,5,I paid 2581 rupees which felt high. Breakfast and restaurant food quality was decent.,Emma Davis,google,2025-12-06T17:53:15.395538
+HOTEL_001_6132c90835eb,HOTEL_001,1,"For complaints, contact info@hotel.in",Kavya Desai,booking,2025-10-08T17:53:15.442844
+HOTEL_001_3d719c2b777b,HOTEL_001,4,I paid 4747 rupees which felt high. Safety and security measures was decent.,Lisa Anderson,booking,2025-11-02T17:53:15.561697
+HOTEL_001_9a27a1f88db8,HOTEL_001,5,Manager Priya was nice but the Hotel location and nearby attractions was disappointing.,Arjun Menon,booking,2025-12-23T17:53:15.656635
+HOTEL_001_0bd1070c825e,HOTEL_001,2,The owner Mr. Sharma was helpful but Parking availability and quality could be better.,Sarah Johnson,internal,2025-08-03T17:53:15.656694
+HOTEL_001_16e69e2582ed,HOTEL_001,3,The room was nice but I paid ₹4136 per night. Staff behavior and customer service was okay.,Kavya Desai,booking,2025-10-28T17:53:15.925245
+HOTEL_001_a1dca8381562,HOTEL_001,5,Spoke with owner Rajesh Kumar about Maintenance and repairs - he promised improvements.,Rajesh Kumar,internal,2025-07-12T17:53:16.021013
+HOTEL_001_bca695001c57,HOTEL_001,2,Spoke with owner Rajesh Kumar about Noise levels and quiet atmosphere - he promised improvements.,Mary White,internal,2025-12-16T17:53:16.021089
+HOTEL_001_64b1f9fc7d95,HOTEL_001,3,The room was nice but I paid ₹3623 per night. Maintenance and repairs was okay.,Rajesh Kumar,booking,2025-02-27T17:53:16.245261
+HOTEL_001_de6d28781d72,HOTEL_001,4,I paid 5358 rupees which felt high. Maintenance and repairs was decent.,Pooja Kumari,booking,2025-03-01T17:53:16.245311
+HOTEL_001_e18221502563,HOTEL_001,5,Bloody awful Cleanliness and room condition! Worst experience ever!,Deepak Mishra,booking,2025-07-23T17:53:16.268236
+HOTEL_001_1cc67431d870,HOTEL_001,5,Bloody awful Safety and security measures! Worst experience ever!,Anjali Nair,google,2026-01-26T17:53:16.592341
+HOTEL_001_06af6b6d5ffb,HOTEL_001,1,"I paid 5390 rupees which felt high. Pool, gym, and other amenities was decent.",Mary White,booking,2026-02-06T17:53:16.592395
+HOTEL_001_3f0468c04b0b,HOTEL_001,5,Manager Priya was nice but the Maintenance and repairs was disappointing.,Isha Kapoor,google,2025-11-19T17:53:16.690086
