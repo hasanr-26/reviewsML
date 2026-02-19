@@ -14,7 +14,6 @@ DB_PORT = int(os.getenv("DB_PORT", "27017"))
 DB_NAME = os.getenv("DB_NAME", "reviews_poc")
 
 
-
 SENTIMENT_TAGS = [
     "SENTIMENT_POSITIVE",
     "SENTIMENT_NEUTRAL",
