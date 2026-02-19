@@ -1,0 +1,5 @@
+CODE_EXPLANATION.md
+.env 
+__pycache__/
+data/ 
+exports/ 
