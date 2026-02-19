@@ -20,7 +20,6 @@ from prompts import (
 
 logger = logging.getLogger(__name__)
 
-# Groq client will be initialized on first use
 client = None
 
 def _get_client():
@@ -44,26 +43,19 @@ class ReviewAnalyzer:
         Analyze a single review - comprehensive extraction + decision
         """
         try:
-            # Step 1: LLM Analysis
             signals, topic_tags, flags = self._analyze_with_llm(rating, review_text)
             
-            # Step 2: Backup regex checks (defense against LLM failure)
             signals = self._enhance_signals_with_regex(review_text, signals)
             
-            # Step 3: Determine sentiment
             sentiment = self._determine_sentiment(signals['sentiment'], rating)
             
-            # Step 4: Apply publishing rules
             publish_decision, rejection_reasons = self._apply_publishing_rules(signals)
             
-            # Step 5: Generate tags
             sentiment_tag = self._get_sentiment_tag(sentiment)
             all_tags = self._generate_tags(signals, topic_tags, sentiment_tag)
             
-            # Step 6: Create summary
             summary = signals.get('summary', self._auto_summarize(review_text))
             
-            # Prepare output
             analysis_result = {
                 "review_id": review_id,
                 "hotel_id": hotel_id,
@@ -84,7 +76,6 @@ class ReviewAnalyzer:
         
         except Exception as e:
             logger.error(f"Error analyzing review {review_id}: {e}")
-            # Return safe defaults on complete failure
             return self._get_safe_default_analysis(review_id, hotel_id, rating, review_text)
     
     def _analyze_with_llm(self, rating: int, review_text: str) -> Tuple[Dict, List[str], List[str]]:
@@ -105,8 +96,6 @@ class ReviewAnalyzer:
             
             response_text = response.choices[0].message.content.strip()
             
-            # Parse JSON response
-            # Try to extract JSON if it's wrapped in markdown code blocks
             if "```json" in response_text:
                 response_text = response_text.split("```json")[1].split("```")[0].strip()
             elif "```" in response_text:
@@ -127,7 +116,6 @@ class ReviewAnalyzer:
         
         except json.JSONDecodeError as e:
             logger.error(f"JSON parsing error in LLM response: {e}")
-            # Return fallback with safe defaults
             return self._get_default_signals(), [], []
         except Exception as e:
             logger.error(f"LLM API error: {e}")
@@ -140,35 +128,32 @@ class ReviewAnalyzer:
         """
         text_lower = review_text.lower()
         
-        # Price detection
         if any(re.search(pattern, text_lower, re.IGNORECASE) for pattern in PRICE_PATTERNS):
             signals['price_mentioned'] = True
         
-        # Contact info detection
         if any(re.search(pattern, review_text) for pattern in CONTACT_PATTERNS):
             signals['phone_email_present'] = True
         
-        # Owner name patterns
         if any(re.search(pattern, text_lower, re.IGNORECASE) for pattern in OWNER_NAME_PATTERNS):
             signals['owner_name_mentioned'] = True
         
-        # Profanity
         if any(re.search(pattern, text_lower) for pattern in PROFANITY_PATTERNS):
             signals['abusive_language'] = True
         
-        # Links/spam
         if any(re.search(pattern, review_text) for pattern in SUSPICIOUS_LINK_PATTERNS):
             signals['spam_or_links'] = True
+        
+        word_count = len(review_text.strip().split())
+        if word_count < 15:
+            signals['too_short'] = True
         
         return signals
     
     def _determine_sentiment(self, llm_sentiment: str, rating: int) -> str:
         """Determine sentiment from LLM and rating"""
-        # Validate sentiment from LLM
         if llm_sentiment not in config.SENTIMENT_TAGS:
             llm_sentiment = 'SENTIMENT_NEUTRAL'
         
-        # Override based on rating if LLM is inconsistent
         if rating >= 4 and llm_sentiment == 'SENTIMENT_NEGATIVE':
             return 'SENTIMENT_POSITIVE'
         elif rating <= 2 and llm_sentiment == 'SENTIMENT_POSITIVE':
@@ -182,7 +167,6 @@ class ReviewAnalyzer:
         """
         rejection_reasons = []
         
-        # Hard reject rules
         hard_reject_checks = {
             'price_mentioned': 'PRICE_MENTIONED',
             'owner_name_mentioned': 'OWNER_MENTIONED',
@@ -210,12 +194,10 @@ class ReviewAnalyzer:
         """Generate final tag list"""
         tags = [sentiment_tag]
         
-        # Add only valid topic tags
         for tag in topic_tags:
             if tag in config.TOPIC_TAGS:
                 tags.append(tag)
         
-        # Add special tags based on signals
         special_tag_map = {
             'price_mentioned': 'PRICE_MENTIONED',
             'owner_name_mentioned': 'OWNER_MENTIONED',
@@ -228,7 +210,6 @@ class ReviewAnalyzer:
             if signals.get(signal_key, False):
                 tags.append(special_tag)
         
-        # Remove duplicates while preserving order
         seen = set()
         unique_tags = []
         for tag in tags:
@@ -261,7 +242,6 @@ class ReviewAnalyzer:
     def _get_safe_default_analysis(self, review_id: str, hotel_id: str, rating: int, review_text: str) -> Dict:
         """Return safe default analysis on complete failure"""
         signals = self._get_default_signals()
-        # Still apply regex checks even on LLM failure
         signals = self._enhance_signals_with_regex(review_text, signals)
         
         publish_decision, rejection_reasons = self._apply_publishing_rules(signals)

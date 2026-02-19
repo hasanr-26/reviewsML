@@ -76,7 +76,6 @@ class DataExporter:
     def export_enriched_csv(reviews_enriched: List[Dict], filepath: str) -> str:
         """Export enriched review data to CSV"""
         try:
-            # Flatten the data for CSV export
             rows = []
             for review in reviews_enriched:
                 row = {
@@ -88,7 +87,7 @@ class DataExporter:
                     'tags': '; '.join(review['tags']) if review['tags'] else '',
                     'sentiment': review['sentiment'],
                     'summary': review['summary'],
-                    'review_text': review['review_text'][:500]  # Limit to 500 chars for CSV
+                    'review_text': review['review_text'][:500]
                 }
                 rows.append(row)
             

@@ -8,7 +8,6 @@ from pathlib import Path
 from review_generator import ReviewGenerator, ReviewExporter
 import config
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format=config.LOG_FORMAT
@@ -18,13 +17,11 @@ logger = logging.getLogger(__name__)
 def main():
     """Generate and export reviews"""
     try:
-        # Create data directory
         Path("data").mkdir(exist_ok=True)
         logger.info("Data directory ensured")
         
-        # Generate reviews
-        hotel_id = config.DB_NAME  # Use default hotel ID
-        count = 500  # Generate 500 reviews
+        hotel_id = config.DB_NAME
+        count = 500
         
         logger.info(f"Starting review generation: {count} reviews for {hotel_id}")
         
@@ -35,7 +32,6 @@ def main():
             logger.error("No reviews were generated")
             return 1
         
-        # Export
         exporter = ReviewExporter()
         jsonl_path = exporter.export_jsonl(reviews, "data/reviews_raw.jsonl")
         csv_path = exporter.export_csv(reviews, "data/reviews_raw.csv")

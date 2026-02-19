@@ -13,7 +13,6 @@ from prompts import REVIEW_GENERATION_PROMPT, PROMPT_VERSION
 
 logger = logging.getLogger(__name__)
 
-# Groq client will be initialized on first use
 client = None
 
 def _get_client():
@@ -53,7 +52,6 @@ class ReviewGenerator:
                 reviewer_name = random.choice(self.reviewer_names)
                 source = random.choice(self.sources)
                 
-                # ~20% problematic reviews
                 if random.random() < 0.2:
                     review_text = self._generate_problematic_review(rating, topic, reviewer_name)
                 else:
@@ -111,24 +109,19 @@ class ReviewGenerator:
     def _generate_problematic_review(self, rating: int, topic: str, reviewer_name: str) -> str:
         """Generate a review with problematic content (price, owner name, etc.)"""
         problematic_templates = [
-            # Price mentions
             f"The room was nice but I paid ₹{random.randint(3000, 8000)} per night. {topic} was okay.",
             f"Location is great, Rs. {random.randint(4000, 7000)} seemed expensive though. {topic} was average.",
             f"I paid {random.randint(2000, 6000)} rupees which felt high. {topic} was decent.",
-            
-            # Owner/manager mentions
+            f"Room toh accha tha but ₹{random.randint(4000, 9000)} per night bahut zyada hai. {topic} theek tha.",
+            f"Bhai {random.randint(3000, 7000)} rupees liye inhone, {topic} ke liye itna paisa waste.",
             f"The owner Mr. Sharma was helpful but {topic} could be better.",
             f"Manager Priya was nice but the {topic} was disappointing.",
             f"Spoke with owner Rajesh Kumar about {topic} - he promised improvements.",
-            
-            # Email/phone mentions
+            f"Owner Sharma ji se mila, {topic} ke baare mein baat ki. Unhone bola fix karenge.",
             f"For complaints, contact {random.choice(['admin@grandparadise.com', '9876543210', 'info@hotel.in'])}",
-            
-            # Abusive language
             f"The damn {topic} was horrible! Waste of money!",
             f"Bloody awful {topic}! Worst experience ever!",
-            
-            # Spam-like
+            f"Damn bakwas {topic}! Bilkul bekar experience tha, dobara nahi aaunga!",
             f"Check out my blog: www.myhotelreviews.com for more reviews about {topic}",
         ]
         
@@ -174,10 +167,8 @@ def generate_and_export_reviews(hotel_id: str, count: int) -> Dict:
     generator = ReviewGenerator()
     exporter = ReviewExporter()
     
-    # Generate reviews
     reviews = generator.generate_reviews(count)
     
-    # Export to JSONL and CSV
     jsonl_path = f"data/reviews_raw.jsonl"
     csv_path = f"data/reviews_raw.csv"
     

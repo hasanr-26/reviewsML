@@ -17,21 +17,18 @@ from review_generator import ReviewGenerator, ReviewExporter, generate_and_expor
 from review_analyzer import ReviewAnalyzer
 from utils import DataImporter, DataExporter, FileManager, validate_review_input
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format=config.LOG_FORMAT
 )
 logger = logging.getLogger(__name__)
 
-# Initialize FastAPI
 app = FastAPI(
     title="Hotel Reviews Analysis POC",
     description="Proof of Concept for review analysis, moderation, and tagging",
     version="1.0.0"
 )
 
-# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -40,7 +37,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize database on startup
 @app.on_event("startup")
 async def startup():
     """Initialize database on application startup"""
@@ -56,7 +52,6 @@ async def shutdown():
     """Close database connection on shutdown"""
     close_db()
 
-# ==================== HEALTH CHECK ====================
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
@@ -65,7 +60,6 @@ async def health_check():
         "timestamp": datetime.utcnow().isoformat()
     }
 
-# ==================== SINGLE REVIEW ANALYSIS ====================
 @app.post("/reviews/analyze-one", response_model=ReviewAnalysisOutput)
 async def analyze_single_review(review: ReviewInput):
     """
@@ -78,10 +72,8 @@ async def analyze_single_review(review: ReviewInput):
     - Returns analysis results
     """
     try:
-        # Generate review ID if not provided
         review_id = f"{review.hotel_id}_{uuid.uuid4().hex[:12]}"
         
-        # Analyze review
         analyzer = ReviewAnalyzer()
         analysis = analyzer.analyze_review(
             review_id=review_id,
@@ -90,7 +82,6 @@ async def analyze_single_review(review: ReviewInput):
             review_text=review.review_text
         )
         
-        # Store in MongoDB
         enriched_collection = get_reviews_enriched_collection()
         enriched_record = {
             "review_id": analysis['review_id'],
@@ -130,7 +121,6 @@ async def analyze_single_review(review: ReviewInput):
         logger.error(f"Error in analyze_single_review: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# ==================== BULK ANALYSIS ====================
 @app.post("/reviews/analyze-bulk", response_model=BulkAnalysisOutput)
 async def analyze_bulk_reviews(request: BulkAnalysisInput):
     """
@@ -143,7 +133,6 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
         start_time = time.time()
         FileManager.ensure_data_dir()
         
-        # Import reviews from file
         importer = DataImporter()
         reviews_to_analyze = []
         
@@ -157,10 +146,30 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
         
         logger.info(f"Found {len(reviews_to_analyze)} valid reviews to analyze")
         
-        # Get MongoDB collections
+        raw_collection = get_reviews_raw_collection()
         enriched_collection = get_reviews_enriched_collection()
         
-        # Analyze and store reviews
+        for review in reviews_to_analyze:
+            try:
+                raw_record = {
+                    "review_id": review.get('review_id', ''),
+                    "hotel_id": request.hotel_id,
+                    "rating": int(review.get('rating', 3)),
+                    "review_text": str(review.get('review_text', '')),
+                    "reviewer_name": review.get('reviewer_name', 'Anonymous'),
+                    "source": review.get('source', 'internal'),
+                    "created_at": datetime.utcnow()
+                }
+                raw_collection.update_one(
+                    {"review_id": raw_record["review_id"]},
+                    {"$set": raw_record},
+                    upsert=True
+                )
+            except Exception as e:
+                logger.warning(f"Failed to store raw review: {e}")
+        
+        logger.info(f"Stored {len(reviews_to_analyze)} raw reviews in MongoDB")
+        
         analyzer = ReviewAnalyzer()
         analyzed_reviews = []
         published_count = 0
@@ -172,7 +181,6 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
                 rating = int(review.get('rating', 3))
                 review_text = str(review.get('review_text', ''))
                 
-                # Analyze
                 analysis = analyzer.analyze_review(
                     review_id=review_id,
                     hotel_id=request.hotel_id,
@@ -180,7 +188,6 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
                     review_text=review_text
                 )
                 
-                # Store in MongoDB
                 enriched_record = {
                     "review_id": analysis['review_id'],
                     "hotel_id": analysis['hotel_id'],
@@ -212,7 +219,6 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
                 logger.error(f"Error analyzing review {idx}: {e}")
                 continue
         
-        # Export to CSV
         csv_path = FileManager.get_export_path("reviews_enriched.csv")
         exporter = DataExporter()
         exporter.export_enriched_csv(analyzed_reviews, csv_path)
@@ -225,7 +231,7 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
             total_reviews=len(analyzed_reviews),
             published_count=published_count,
             rejected_count=rejected_count,
-            mysql_rows_inserted=len(analyzed_reviews),
+            db_rows_inserted=len(analyzed_reviews),
             csv_output_path=csv_path,
             processing_time_seconds=processing_time
         )
@@ -234,7 +240,6 @@ async def analyze_bulk_reviews(request: BulkAnalysisInput):
         logger.error(f"Error in analyze_bulk_reviews: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# ==================== REVIEW GENERATION ====================
 @app.post("/reviews/generate", response_model=ReviewGenerationOutput)
 async def generate_reviews(request: ReviewGenerationInput):
     """
@@ -256,7 +261,6 @@ async def generate_reviews(request: ReviewGenerationInput):
         logger.error(f"Error in generate_reviews: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# ==================== SUMMARY REPORT ====================
 @app.get("/reports/summary", response_model=SummaryReportOutput)
 async def get_summary_report(hotel_id: str):
     """
@@ -271,7 +275,6 @@ async def get_summary_report(hotel_id: str):
     try:
         enriched_collection = get_reviews_enriched_collection()
         
-        # Query MongoDB
         total_reviews = enriched_collection.count_documents({"hotel_id": hotel_id})
         published_count = enriched_collection.count_documents({
             "hotel_id": hotel_id,
@@ -279,10 +282,8 @@ async def get_summary_report(hotel_id: str):
         })
         rejected_count = total_reviews - published_count
         
-        # Calculate percentages
         publish_percentage = (published_count / total_reviews * 100) if total_reviews > 0 else 0
         
-        # Get rejection reason counts
         rejection_reason_counts = {}
         rejected_reviews = enriched_collection.find({
             "hotel_id": hotel_id,
@@ -294,7 +295,6 @@ async def get_summary_report(hotel_id: str):
                 for reason in review["rejection_reasons"]:
                     rejection_reason_counts[reason] = rejection_reason_counts.get(reason, 0) + 1
         
-        # Get sentiment distribution
         sentiment_distribution = {}
         pipeline = [
             {"$match": {"hotel_id": hotel_id}},
@@ -304,7 +304,6 @@ async def get_summary_report(hotel_id: str):
         for doc in sentiment_results:
             sentiment_distribution[doc["_id"]] = doc["count"]
         
-        # Get tag distribution
         tag_distribution = {}
         all_reviews = enriched_collection.find({"hotel_id": hotel_id})
         for review in all_reviews:
@@ -327,7 +326,6 @@ async def get_summary_report(hotel_id: str):
         logger.error(f"Error in get_summary_report: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# ==================== DATABASE INFO ====================
 @app.get("/db/info")
 async def get_db_info():
     """Get MongoDB statistics"""

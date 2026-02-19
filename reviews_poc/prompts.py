@@ -16,6 +16,8 @@ Requirements:
 Guidelines:
 - Write naturally as if from a real guest
 - Be specific with details (e.g., "The biryani at the restaurant was delicious" instead of "Food was good")
+- Most reviews should be in English, but about 10-15% should be in Hinglish (mix of Hindi and English)
+  Hinglish examples: "Room bahut accha tha, loved the view!", "Staff ka behaviour was not good yaar", "Breakfast mein variety thi but taste thoda off tha"
 - Some reviews should mention problems that would NOT be published (price, owner name, phone, emails, abuse)
 - Approximately 20% of reviews should be "problematic" and contain rejection-worthy content
 
@@ -56,21 +58,20 @@ REJECTION_REASONS_RULES = {
     "HATE_SEXUAL_VIOLENT": "Contains hate speech, sexual, or violent content",
 }
 
-# Regex patterns for backup detection (when LLM fails)
 PRICE_PATTERNS = [
-    r'₹\s*\d+',           # ₹ 5000
-    r'rs\.?\s*\d+',       # Rs. 5000
-    r'inr\s*\d+',         # INR 5000
-    r'paid\s*(\d+|\w+)',  # paid 5000, paid rupees
-    r'cost\s*(\d+|\w+)',  # cost 1000
-    r'price\s*(\d+|\w+)', # price 2000
-    r'\d+\s*(?:per night|per day|per room)', # 5000 per night
+    r'₹\s*\d+',
+    r'rs\.?\s*\d+',
+    r'inr\s*\d+',
+    r'paid\s*(\d+|\w+)',
+    r'cost\s*(\d+|\w+)',
+    r'price\s*(\d+|\w+)',
+    r'\d+\s*(?:per night|per day|per room)',
 ]
 
 CONTACT_PATTERNS = [
-    r'\b\d{10}\b',                    # 10-digit phone
-    r'\b\d{3}-\d{3}-\d{4}\b',        # 123-456-7890
-    r'[\w\.-]+@[\w\.-]+\.\w+',       # email@domain.com
+    r'\b\d{10}\b',
+    r'\b\d{3}-\d{3}-\d{4}\b',
+    r'[\w\.-]+@[\w\.-]+\.\w+',
 ]
 
 OWNER_NAME_PATTERNS = [
@@ -79,7 +80,7 @@ OWNER_NAME_PATTERNS = [
 ]
 
 PROFANITY_PATTERNS = [
-    r'\b(?:damn|shit|bloody|crap|hell)\b',  # Add more as needed for your language/context
+    r'\b(?:damn|shit|bloody|crap|hell)\b',
 ]
 
 SUSPICIOUS_LINK_PATTERNS = [

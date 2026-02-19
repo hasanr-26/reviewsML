@@ -6,26 +6,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# LLM Configuration
 LLM_MODEL = "mixtral-8x7b-32768"
 LLM_TEMPERATURE = 0.7
 LLM_MAX_TOKENS = 500
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 
-# MongoDB Configuration
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_PORT = int(os.getenv("DB_PORT", "27017"))
 DB_USER = os.getenv("DB_USER", "")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "")
 DB_NAME = os.getenv("DB_NAME", "reviews_poc")
 
-# Build MongoDB connection string
 if DB_USER and DB_PASSWORD:
     MONGODB_URL = f"mongodb://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?retryWrites=true"
 else:
     MONGODB_URL = f"mongodb://{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
-# Predefined Tags
 SENTIMENT_TAGS = [
     "SENTIMENT_POSITIVE",
     "SENTIMENT_NEUTRAL",
@@ -59,7 +55,6 @@ SPECIAL_TAGS = [
 
 ALL_TAGS = SENTIMENT_TAGS + TOPIC_TAGS + SPECIAL_TAGS
 
-# Review Generation Settings
 TOPICS_FOR_GENERATION = [
     "Cleanliness and room condition",
     "Bathroom quality and amenities",

@@ -21,7 +21,7 @@ class ReviewAnalysisOutput(BaseModel):
     review_text: str
     summary: str
     sentiment: str
-    publish_decision: str  # PUBLISH or REJECT
+    publish_decision: str
     rejection_reasons: List[str]
     tags: List[str]
     detected_signals: dict
@@ -38,7 +38,7 @@ class BulkAnalysisOutput(BaseModel):
     total_reviews: int
     published_count: int
     rejected_count: int
-    mysql_rows_inserted: int
+    db_rows_inserted: int
     csv_output_path: str
     processing_time_seconds: float
 
@@ -65,7 +65,6 @@ class SummaryReportOutput(BaseModel):
     tag_distribution: dict
     sentiment_distribution: dict
 
-# Database Models (for reference in SQLAlchemy)
 class ReviewRawDB(BaseModel):
     review_id: str
     hotel_id: str
@@ -84,12 +83,12 @@ class ReviewEnrichedDB(BaseModel):
     rating: int
     review_text: str
     publish_decision: str
-    rejection_reasons: str  # JSON string
-    flags: str  # JSON string
+    rejection_reasons: List[str]
+    flags: List[str]
     summary: str
-    tags: str  # JSON array string
+    tags: List[str]
     sentiment: str
-    detected_signals: str  # JSON string
+    detected_signals: dict
     analyzed_at: datetime
     model_name: str
     prompt_version: str
