@@ -15,7 +15,7 @@ cd reviews_poc
 pip install -r requirements.txt
 ```
 
-Create a `.env` file:
+`.env` file:
 ```
 GROQ_API_KEY=your_key_here
 DB_HOST=localhost
@@ -23,7 +23,7 @@ DB_PORT=27017
 DB_NAME=reviews_poc
 ```
 
-Make sure MongoDB is running (`mongod` in a separate terminal), then generate the dataset:
+generate the dataset:
 ```bash
 python generate_dataset.py
 ```
